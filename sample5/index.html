@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verdant &amp; Vessel — Journal of Contemporary Art &amp; Global Art Awards</title>
+<meta name="description" content="An independent art journal and international fine art competition for painting, sculpture, and mixed media.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --ink-000:#0F1A17;      /* deepest bg */
+  --ink-100:#152621;      /* panel bg */
+  --forest-400:#36594F;   /* mid panel / border */
+  --forest-500:#49796B;   /* accent-dim */
+  --sage-600:#5C9987;     /* primary accent */
+  --sage-700:#7AAE9F;     /* secondary accent / hover */
+  --sage-800:#99C2B6;     /* light accent / on-dark text */
+  --paper:#F6F4EE;        /* the one light neutral */
+  --paper-dim:#E7E4DA;
+
+  --font-display:'Fraunces', Georgia, serif;
+  --font-body:'Jost', 'Segoe UI', sans-serif;
+
+  --max-w:1240px;
+  --gutter:clamp(1.25rem, 4vw, 4rem);
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --dur-s:.35s;
+  --dur-m:.7s;
+  --dur-l:1.1s;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important;}
+}
+body{
+  margin:0;
+  background:var(--ink-000);
+  color:var(--paper);
+  font-family:var(--font-body);
+  font-weight:300;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;margin:0;letter-spacing:-.01em;}
+p{margin:0;}
+:focus-visible{outline:2px solid var(--sage-700);outline-offset:3px;}
+::selection{background:var(--sage-600);color:var(--ink-000);}
+
+.wrap{max-width:var(--max-w);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter);}
+.light{background:var(--paper);color:var(--ink-000);}
+
+/* section reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity var(--dur-m) var(--ease), transform var(--dur-m) var(--ease);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.reveal-stagger > *{opacity:0;transform:translateY(22px);transition:opacity var(--dur-m) var(--ease), transform var(--dur-m) var(--ease);}
+.reveal-stagger.in > *{opacity:1;transform:translateY(0);}
+.reveal-stagger.in > *:nth-child(1){transition-delay:.05s;}
+.reveal-stagger.in > *:nth-child(2){transition-delay:.14s;}
+.reveal-stagger.in > *:nth-child(3){transition-delay:.23s;}
+.reveal-stagger.in > *:nth-child(4){transition-delay:.32s;}
+.reveal-stagger.in > *:nth-child(5){transition-delay:.41s;}
+.reveal-stagger.in > *:nth-child(6){transition-delay:.5s;}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.site-nav{
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  padding:1.1rem var(--gutter);
+  display:flex; align-items:center; justify-content:space-between;
+  background:linear-gradient(to bottom, rgba(15,26,23,.85), rgba(15,26,23,0));
+  transition:background var(--dur-s) var(--ease), padding var(--dur-s) var(--ease), backdrop-filter var(--dur-s);
+}
+.site-nav.scrolled{
+  background:rgba(15,26,23,.92);
+  backdrop-filter:blur(10px);
+  padding:.7rem var(--gutter);
+  border-bottom:1px solid rgba(122,174,159,.15);
+}
+.brand{
+  display:flex; align-items:baseline; gap:.5rem;
+  font-family:var(--font-display); font-size:1.25rem; font-weight:600;
+  color:var(--paper); letter-spacing:.01em;
+}
+.brand small{font-family:var(--font-body); font-weight:300; font-size:.62rem; color:var(--sage-700); letter-spacing:.14em;}
+.nav-links{display:flex; gap:2rem; list-style:none; margin:0; padding:0;}
+.nav-links a{
+  font-size:.88rem; font-weight:400; color:var(--sage-800); position:relative; padding:.3rem 0;
+  transition:color var(--dur-s);
+}
+.nav-links a::after{
+  content:''; position:absolute; left:0; bottom:-2px; width:0; height:1px; background:var(--sage-700);
+  transition:width var(--dur-s) var(--ease);
+}
+.nav-links a:hover, .nav-links a.active{color:var(--paper);}
+.nav-links a:hover::after, .nav-links a.active::after{width:100%;}
+.nav-cta{
+  border:1px solid var(--sage-700); color:var(--paper); padding:.55rem 1.3rem; font-size:.82rem;
+  border-radius:2px; white-space:nowrap; transition:background var(--dur-s), color var(--dur-s), border-color var(--dur-s);
+}
+.nav-cta:hover{background:var(--sage-700); color:var(--ink-000);}
+.nav-toggle{display:none; background:none; border:0; color:var(--paper); font-size:1.6rem; cursor:pointer;}
+
+@media (max-width:900px){
+  .nav-links{
+    position:fixed; inset:0 0 0 auto; width:min(78vw,340px); height:100vh;
+    background:var(--ink-100); flex-direction:column; justify-content:center; gap:1.6rem; padding:2rem;
+    transform:translateX(100%); transition:transform var(--dur-m) var(--ease);
+    border-left:1px solid rgba(122,174,159,.2);
+  }
+  .nav-links.open{transform:translateX(0);}
+  .nav-links a{font-size:1.1rem;}
+  .nav-cta{display:none;}
+  .nav-toggle{display:block;}
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative; min-height:100vh; display:flex; align-items:flex-end;
+  overflow:hidden; padding-bottom:5rem;
+}
+.hero-media{position:absolute; inset:0; z-index:0;}
+.hero-media video, .hero-media img{width:100%; height:100%; object-fit:cover;}
+.hero-media::after{
+  content:''; position:absolute; inset:0;
+  background:
+    linear-gradient(to top, var(--ink-000) 2%, rgba(15,26,23,.55) 45%, rgba(15,26,23,.35) 70%, rgba(15,26,23,.65) 100%);
+}
+.hero-inner{position:relative; z-index:1; width:100%;}
+.eyebrow{
+  font-size:.78rem; color:var(--sage-800); font-weight:400; letter-spacing:.02em;
+  display:inline-block; margin-bottom:1.1rem; opacity:0;
+}
+.hero h1{
+  font-size:clamp(2.5rem, 6vw, 5rem); line-height:1.03; max-width:16ch; color:var(--paper);
+  opacity:0;
+}
+.hero h1 em{font-style:italic; color:var(--sage-800); font-weight:400;}
+.hero-sub{
+  margin-top:1.5rem; max-width:46ch; font-size:1.08rem; color:var(--paper-dim); font-weight:300; opacity:0;
+}
+.hero-ctas{display:flex; gap:1rem; margin-top:2.4rem; flex-wrap:wrap; opacity:0;}
+
+.btn{
+  display:inline-flex; align-items:center; gap:.6rem; padding:.9rem 1.8rem; font-size:.9rem;
+  border-radius:2px; transition:transform var(--dur-s) var(--ease), background var(--dur-s), color var(--dur-s), border-color var(--dur-s);
+  border:1px solid transparent; cursor:pointer;
+}
+.btn-primary{background:var(--sage-600); color:var(--ink-000); font-weight:500;}
+.btn-primary:hover{background:var(--sage-800); transform:translateY(-2px);}
+.btn-ghost{border-color:rgba(246,244,238,.4); color:var(--paper);}
+.btn-ghost:hover{border-color:var(--paper); background:rgba(246,244,238,.06); transform:translateY(-2px);}
+
+.hero.animate-in .eyebrow{animation:riseIn .8s var(--ease) .3s forwards;}
+.hero.animate-in h1{animation:riseIn 1s var(--ease) .45s forwards;}
+.hero.animate-in .hero-sub{animation:riseIn .9s var(--ease) .7s forwards;}
+.hero.animate-in .hero-ctas{animation:riseIn .9s var(--ease) .9s forwards;}
+@keyframes riseIn{from{opacity:0; transform:translateY(26px);} to{opacity:1; transform:translateY(0);}}
+
+.scroll-cue{
+  position:absolute; right:var(--gutter); bottom:1.6rem; z-index:1; display:flex; align-items:center; gap:.6rem;
+  color:var(--sage-800); font-size:.72rem; letter-spacing:.08em;
+}
+.scroll-cue .line{width:1px; height:34px; background:linear-gradient(var(--sage-700), transparent); animation:pulseLine 2.2s ease-in-out infinite;}
+@keyframes pulseLine{0%,100%{opacity:.35;}50%{opacity:1;}}
+
+/* ============================================================
+   STATUS BANNER (Featured Awards)
+   ============================================================ */
+.status-banner{
+  background:var(--ink-100); border-top:1px solid rgba(122,174,159,.15); border-bottom:1px solid rgba(122,174,159,.15);
+  padding:1.4rem var(--gutter);
+}
+.status-inner{
+  max-width:var(--max-w); margin:0 auto; display:flex; align-items:center; gap:2.5rem; flex-wrap:wrap;
+  justify-content:space-between;
+}
+.status-left{display:flex; align-items:center; gap:1rem;}
+.dot{width:8px; height:8px; border-radius:50%; background:var(--sage-700); position:relative; flex-shrink:0;}
+.dot::after{
+  content:''; position:absolute; inset:-6px; border:1px solid var(--sage-700); border-radius:50%;
+  animation:dotPing 2.4s ease-out infinite;
+}
+@keyframes dotPing{0%{transform:scale(.6); opacity:1;} 100%{transform:scale(1.9); opacity:0;}}
+.status-left strong{font-weight:500; color:var(--paper);}
+.status-left span{color:var(--sage-800); font-size:.9rem;}
+.status-facts{display:flex; gap:2.2rem; flex-wrap:wrap;}
+.status-fact{font-size:.82rem; color:var(--paper-dim);}
+.status-fact b{display:block; font-family:var(--font-display); font-size:1.15rem; color:var(--paper); font-weight:500;}
+
+/* ============================================================
+   SECTION HEADERS
+   ============================================================ */
+.section{padding:7rem 0;}
+.section.tight{padding:5rem 0;}
+.section-head{
+  display:flex; justify-content:space-between; align-items:flex-end; gap:2rem; margin-bottom:3.2rem; flex-wrap:wrap;
+}
+.section-head h2{font-size:clamp(1.9rem, 3.4vw, 2.7rem); max-width:16ch;}
+.section-head p{max-width:42ch; color:var(--sage-800); font-size:.95rem;}
+.light .section-head p{color:var(--forest-400);}
+.kicker{font-size:.8rem; color:var(--sage-700); margin-bottom:.6rem; display:block;}
+.light .kicker{color:var(--forest-500);}
+
+/* ============================================================
+   MAGAZINE SPOTLIGHT
+   ============================================================ */
+.spotlight{
+  display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(2rem,5vw,5rem); align-items:center;
+}
+.spotlight-cover{position:relative;}
+.spotlight-cover img{
+  width:100%; aspect-ratio:3/4; object-fit:cover; box-shadow:0 40px 80px -30px rgba(0,0,0,.6);
+  transition:transform var(--dur-l) var(--ease);
+}
+.spotlight-cover:hover img{transform:translateY(-6px);}
+.spotlight-cover .frame-tag{
+  position:absolute; top:-14px; left:-14px; border:1px solid var(--sage-700); width:100%; height:100%; z-index:-1;
+}
+.spotlight-meta{display:flex; gap:1.5rem; margin-top:1.2rem; font-size:.8rem; color:var(--sage-800);}
+.spotlight h3{font-size:clamp(1.8rem,3vw,2.4rem); margin-bottom:1rem; max-width:14ch;}
+.spotlight-text{color:var(--paper-dim); max-width:52ch; margin-bottom:1.8rem; font-size:1rem;}
+.spotlight-toc{list-style:none; padding:0; margin:0 0 2rem; border-top:1px solid rgba(122,174,159,.2);}
+.spotlight-toc li{
+  display:flex; justify-content:space-between; padding:.75rem 0; border-bottom:1px solid rgba(122,174,159,.2);
+  font-size:.9rem; color:var(--paper-dim);
+}
+.spotlight-toc li span:first-child{color:var(--paper);}
+
+/* ============================================================
+   GALLERY / MASONRY CAROUSEL
+   ============================================================ */
+.gallery-scroller{
+  display:flex; gap:1.2rem; overflow-x:auto; padding-bottom:1rem; scroll-snap-type:x proximity;
+  margin:0 calc(var(--gutter) * -1); padding-left:var(--gutter); padding-right:var(--gutter);
+  scrollbar-width:thin; scrollbar-color:var(--forest-500) transparent;
+}
+.gallery-scroller::-webkit-scrollbar{height:5px;}
+.gallery-scroller::-webkit-scrollbar-thumb{background:var(--forest-500); border-radius:4px;}
+.g-card{
+  position:relative; flex:0 0 auto; width:min(320px, 78vw); scroll-snap-align:start; overflow:hidden;
+  border-radius:2px; cursor:pointer;
+}
+.g-card img{width:100%; height:400px; object-fit:cover; transition:transform .8s var(--ease);}
+.g-card:hover img{transform:scale(1.08);}
+.g-card .g-overlay{
+  position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:1.4rem;
+  background:linear-gradient(to top, rgba(15,26,23,.92), rgba(15,26,23,0) 55%);
+}
+.g-tag{font-size:.68rem; letter-spacing:.06em; color:var(--sage-800); margin-bottom:.35rem;}
+.g-title{font-family:var(--font-display); font-size:1.15rem; color:var(--paper);}
+.g-artist{font-size:.8rem; color:var(--paper-dim); margin-top:.2rem;}
+
+/* ============================================================
+   EDITORIAL COLUMNS GRID
+   ============================================================ */
+.cols-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1.4rem;}
+.col-card{
+  background:var(--ink-100); border:1px solid rgba(122,174,159,.14); padding:2.1rem 1.7rem; position:relative;
+  transition:border-color var(--dur-s), transform var(--dur-s) var(--ease);
+}
+.col-card:hover{border-color:var(--sage-600); transform:translateY(-5px);}
+.col-card .num{font-family:var(--font-display); font-size:.85rem; color:var(--forest-500);}
+.col-card h4{font-size:1.15rem; margin:1.1rem 0 .7rem; max-width:18ch;}
+.col-card p{font-size:.86rem; color:var(--sage-800); line-height:1.6;}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about-hero{display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,5vw,5rem); align-items:center;}
+.about-hero img{width:100%; height:560px; object-fit:cover;}
+.about-hero h2{font-size:clamp(2.1rem,4vw,3rem); margin-bottom:1.4rem;}
+.about-hero p{color:var(--paper-dim); max-width:48ch; margin-bottom:1rem; font-size:1rem;}
+.pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:5rem;}
+.pillar{padding:2rem 0; border-top:1px solid rgba(122,174,159,.22);}
+.pillar h4{font-size:1.2rem; margin-bottom:.8rem;}
+.pillar p{color:var(--sage-800); font-size:.9rem;}
+
+.people-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin-top:1rem;}
+.person{text-align:left;}
+.person img{width:100%; aspect-ratio:1/1.05; object-fit:cover; filter:grayscale(45%); transition:filter var(--dur-m);}
+.person:hover img{filter:grayscale(0%);}
+.person h5{font-family:var(--font-display); font-size:1.05rem; margin-top:1rem; font-weight:500;}
+.person span{font-size:.78rem; color:var(--sage-800); display:block; margin-top:.2rem;}
+
+/* ============================================================
+   TABS (Magazine / Awards)
+   ============================================================ */
+.tabs{display:flex; gap:.5rem; margin-bottom:3rem; flex-wrap:wrap; border-bottom:1px solid rgba(122,174,159,.2); padding-bottom:0;}
+.tab-btn{
+  background:none; border:0; color:var(--sage-800); font-family:var(--font-body); font-size:.92rem; font-weight:400;
+  padding:.9rem 1.3rem; cursor:pointer; position:relative; transition:color var(--dur-s);
+}
+.tab-btn::after{content:''; position:absolute; left:1.3rem; right:1.3rem; bottom:-1px; height:2px; background:var(--sage-600); transform:scaleX(0); transition:transform var(--dur-s) var(--ease); transform-origin:left;}
+.tab-btn.active{color:var(--paper);}
+.tab-btn.active::after{transform:scaleX(1);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block; animation:fadeUp .5s var(--ease);}
+@keyframes fadeUp{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
+
+/* issue archive grid */
+.issue-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1.6rem;}
+.issue-card img{width:100%; aspect-ratio:3/4; object-fit:cover; transition:transform var(--dur-m) var(--ease);}
+.issue-card:hover img{transform:translateY(-6px);}
+.issue-card h5{font-family:var(--font-display); font-size:1rem; margin-top:1rem;}
+.issue-card span{font-size:.78rem; color:var(--sage-800);}
+
+/* legal palette / feature list */
+.feature-list{list-style:none; margin:0; padding:0;}
+.feature-list li{
+  display:grid; grid-template-columns:120px 1fr; gap:2rem; padding:1.8rem 0; border-top:1px solid rgba(122,174,159,.2);
+}
+.feature-list li:last-child{border-bottom:1px solid rgba(122,174,159,.2);}
+.feature-list .flabel{font-size:.78rem; color:var(--sage-700); letter-spacing:.04em; padding-top:.2rem;}
+.feature-list h5{font-size:1.1rem; margin-bottom:.5rem;}
+.feature-list p{color:var(--paper-dim); font-size:.9rem; max-width:60ch;}
+
+/* ============================================================
+   AWARDS
+   ============================================================ */
+.awards-hero{
+  position:relative; padding:6rem 0 4rem; text-align:center; background:var(--ink-100); overflow:hidden;
+}
+.awards-hero::before{
+  content:''; position:absolute; top:-40%; left:50%; width:900px; height:900px; transform:translateX(-50%);
+  background:radial-gradient(circle, rgba(92,153,135,.18), transparent 65%); pointer-events:none;
+}
+.awards-hero .kicker{justify-content:center; display:block; text-align:center;}
+.awards-hero h2{font-size:clamp(2.2rem,5vw,3.6rem); max-width:20ch; margin:0 auto 1.2rem;}
+.awards-hero p{max-width:56ch; margin:0 auto; color:var(--paper-dim); font-size:1.05rem;}
+.timeline{display:flex; justify-content:center; gap:0; margin-top:3.5rem; flex-wrap:wrap; position:relative;}
+.t-step{width:180px; text-align:center; position:relative; padding:0 .5rem;}
+.t-step::before{
+  content:''; position:absolute; top:9px; left:-50%; width:100%; height:1px; background:rgba(122,174,159,.3);
+}
+.t-step:first-child::before{display:none;}
+.t-dot{width:10px; height:10px; border-radius:50%; background:var(--ink-100); border:2px solid var(--sage-700); margin:0 auto 1rem; position:relative; z-index:1;}
+.t-step.current .t-dot{background:var(--sage-600); box-shadow:0 0 0 5px rgba(92,153,135,.2);}
+.t-step h6{font-size:.85rem; font-weight:500; color:var(--paper); margin-bottom:.3rem; font-family:var(--font-body);}
+.t-step span{font-size:.76rem; color:var(--sage-800);}
+
+.category-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem;}
+.cat-card{
+  position:relative; height:340px; overflow:hidden; border-radius:2px;
+}
+.cat-card img{width:100%; height:100%; object-fit:cover; transition:transform .9s var(--ease);}
+.cat-card:hover img{transform:scale(1.1);}
+.cat-card .cat-overlay{
+  position:absolute; inset:0; background:linear-gradient(to top, rgba(15,26,23,.95) 10%, rgba(15,26,23,.15) 60%);
+  display:flex; flex-direction:column; justify-content:flex-end; padding:1.6rem;
+}
+.cat-overlay h4{font-size:1.3rem; color:var(--paper); margin-bottom:.5rem;}
+.cat-overlay .cat-tags{display:flex; flex-wrap:wrap; gap:.4rem; opacity:0; transform:translateY(10px); transition:all var(--dur-s) var(--ease);}
+.cat-card:hover .cat-tags{opacity:1; transform:translateY(0);}
+.cat-tags span{font-size:.68rem; background:rgba(246,244,238,.1); border:1px solid rgba(246,244,238,.2); padding:.25rem .6rem; border-radius:20px; color:var(--sage-800);}
+
+.jury-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:2rem;}
+
+.faq-list{max-width:820px;}
+.faq-item{border-bottom:1px solid rgba(122,174,159,.2);}
+.faq-q{
+  width:100%; text-align:left; background:none; border:0; color:var(--paper); font-family:var(--font-body);
+  font-size:1.02rem; padding:1.5rem 0; display:flex; justify-content:space-between; align-items:center; gap:1rem; cursor:pointer;
+}
+.faq-q .plus{font-size:1.4rem; color:var(--sage-700); transition:transform var(--dur-s) var(--ease); flex-shrink:0;}
+.faq-item.open .plus{transform:rotate(45deg);}
+.faq-a{max-height:0; overflow:hidden; transition:max-height var(--dur-m) var(--ease);}
+.faq-a p{color:var(--paper-dim); padding-bottom:1.5rem; max-width:65ch; font-size:.92rem;}
+
+.winners-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem;}
+.winner-card{position:relative; overflow:hidden;}
+.winner-card img{width:100%; aspect-ratio:4/5; object-fit:cover; transition:transform .8s var(--ease);}
+.winner-card:hover img{transform:scale(1.06);}
+.winner-badge{
+  position:absolute; top:1rem; left:1rem; background:var(--sage-600); color:var(--ink-000); font-size:.68rem;
+  font-weight:500; padding:.35rem .8rem; border-radius:20px; letter-spacing:.03em;
+}
+.winner-info{padding-top:1rem;}
+.winner-info h5{font-family:var(--font-display); font-size:1.15rem;}
+.winner-info span{font-size:.82rem; color:var(--sage-800); display:block; margin-top:.2rem;}
+
+/* ============================================================
+   SUBMISSIONS
+   ============================================================ */
+.submit-types{display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:4.5rem;}
+.type-card{border:1px solid rgba(122,174,159,.2); padding:2.2rem; transition:border-color var(--dur-s), background var(--dur-s);}
+.type-card:hover{border-color:var(--sage-600); background:rgba(92,153,135,.05);}
+.type-card h4{font-size:1.2rem; margin-bottom:.8rem;}
+.type-card p{font-size:.88rem; color:var(--sage-800);}
+
+.form-card{
+  background:var(--ink-100); border:1px solid rgba(122,174,159,.18); padding:clamp(2rem,4vw,3.5rem);
+  display:grid; grid-template-columns:1fr 1fr; gap:1.6rem;
+}
+.form-card .full{grid-column:1/-1;}
+.field label{display:block; font-size:.8rem; color:var(--sage-800); margin-bottom:.55rem;}
+.field input, .field select, .field textarea{
+  width:100%; background:var(--ink-000); border:1px solid rgba(122,174,159,.25); color:var(--paper);
+  padding:.85rem 1rem; font-family:var(--font-body); font-size:.92rem; border-radius:2px;
+  transition:border-color var(--dur-s);
+}
+.field input:focus, .field select:focus, .field textarea:focus{border-color:var(--sage-600);}
+.dropzone{
+  border:1.5px dashed rgba(122,174,159,.35); padding:2.4rem; text-align:center; border-radius:2px; cursor:pointer;
+  transition:border-color var(--dur-s), background var(--dur-s);
+}
+.dropzone:hover{border-color:var(--sage-600); background:rgba(92,153,135,.05);}
+.dropzone span{font-size:.85rem; color:var(--sage-800); display:block; margin-top:.5rem;}
+
+/* ============================================================
+   EXHIBITIONS
+   ============================================================ */
+.exh-feature{position:relative; height:560px; overflow:hidden; margin-bottom:1.4rem;}
+.exh-feature img{width:100%; height:100%; object-fit:cover;}
+.exh-feature .exh-overlay{
+  position:absolute; inset:0; background:linear-gradient(to top, rgba(15,26,23,.92) 20%, rgba(15,26,23,.1) 65%);
+  display:flex; align-items:flex-end; padding:clamp(1.6rem,4vw,3rem);
+}
+.exh-overlay-inner{display:flex; justify-content:space-between; align-items:flex-end; width:100%; gap:2rem; flex-wrap:wrap;}
+.exh-overlay h3{font-size:clamp(1.6rem,3vw,2.4rem); max-width:18ch; margin-bottom:.6rem;}
+.exh-overlay p{color:var(--paper-dim); font-size:.9rem; max-width:40ch;}
+
+.exh-list{display:grid; grid-template-columns:2fr 1fr; gap:1.4rem;}
+.exh-list .exh-feature:nth-child(2){height:auto; aspect-ratio:1/1;}
+
+.partner-strip{display:flex; gap:3rem; flex-wrap:wrap; align-items:center; justify-content:space-between; margin-top:4rem; opacity:.75;}
+.partner-strip span{font-family:var(--font-display); font-size:1.15rem; letter-spacing:.02em; color:var(--sage-800);}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,5vw,5rem);}
+.contact-info h2{font-size:clamp(2rem,4vw,2.9rem); margin-bottom:1.3rem;}
+.contact-info p{color:var(--forest-500); max-width:42ch; margin-bottom:2.5rem;}
+.contact-channels{list-style:none; padding:0; margin:0 0 2.5rem;}
+.contact-channels li{padding:1.1rem 0; border-top:1px solid rgba(15,26,23,.12); display:flex; justify-content:space-between; font-size:.92rem;}
+.contact-channels li:last-child{border-bottom:1px solid rgba(15,26,23,.12);}
+.contact-channels b{font-weight:500;}
+.social-row{display:flex; gap:1.2rem;}
+.social-row a{
+  width:42px; height:42px; border:1px solid rgba(15,26,23,.2); border-radius:50%; display:flex; align-items:center;
+  justify-content:center; font-size:.8rem; transition:background var(--dur-s), color var(--dur-s), border-color var(--dur-s);
+}
+.social-row a:hover{background:var(--ink-000); color:var(--paper); border-color:var(--ink-000);}
+
+.contact-form{background:var(--ink-000); color:var(--paper); padding:clamp(2rem,4vw,3rem);}
+.contact-form label{display:block; font-size:.8rem; color:var(--sage-800); margin-bottom:.5rem; margin-top:1.3rem;}
+.contact-form label:first-child{margin-top:0;}
+.contact-form input, .contact-form select, .contact-form textarea{
+  width:100%; background:var(--ink-100); border:1px solid rgba(122,174,159,.25); color:var(--paper);
+  padding:.85rem 1rem; font-family:var(--font-body); font-size:.92rem; border-radius:2px;
+}
+.contact-form .btn{margin-top:2rem; width:100%; justify-content:center;}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{background:var(--ink-100); padding:5rem 0 2rem; border-top:1px solid rgba(122,174,159,.15);}
+.footer-top{display:grid; grid-template-columns:1.4fr repeat(4,1fr); gap:2.5rem; padding-bottom:4rem;}
+.footer-brand p{color:var(--sage-800); font-size:.88rem; max-width:32ch; margin-top:1rem;}
+.footer-col h6{font-size:.78rem; color:var(--paper); letter-spacing:.05em; margin-bottom:1.2rem; font-family:var(--font-body); font-weight:500;}
+.footer-col ul{list-style:none; margin:0; padding:0;}
+.footer-col li{margin-bottom:.75rem;}
+.footer-col a{color:var(--sage-800); font-size:.86rem; transition:color var(--dur-s);}
+.footer-col a:hover{color:var(--paper);}
+.newsletter{display:flex; gap:0; margin-top:1rem; max-width:340px;}
+.newsletter input{flex:1; background:var(--ink-000); border:1px solid rgba(122,174,159,.25); border-right:0; color:var(--paper); padding:.75rem 1rem; font-family:var(--font-body); font-size:.85rem;}
+.newsletter button{background:var(--sage-600); border:0; color:var(--ink-000); padding:0 1.2rem; cursor:pointer; font-weight:500; transition:background var(--dur-s);}
+.newsletter button:hover{background:var(--sage-800);}
+.footer-bottom{
+  display:flex; justify-content:space-between; align-items:center; padding-top:2rem; border-top:1px solid rgba(122,174,159,.15);
+  flex-wrap:wrap; gap:1rem; font-size:.78rem; color:var(--sage-800);
+}
+.footer-bottom .legal-links{display:flex; gap:1.5rem;}
+.footer-bottom a:hover{color:var(--paper);}
+
+/* toast */
+.toast{
+  position:fixed; bottom:1.6rem; left:50%; transform:translateX(-50%) translateY(20px); z-index:500;
+  background:var(--sage-600); color:var(--ink-000); padding:.9rem 1.6rem; border-radius:3px; font-size:.88rem;
+  opacity:0; pointer-events:none; transition:all var(--dur-s) var(--ease); font-weight:500;
+}
+.toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+
+/* back to top */
+.to-top{
+  position:fixed; bottom:1.8rem; right:1.8rem; z-index:150; width:46px; height:46px; border-radius:50%;
+  background:var(--ink-100); border:1px solid rgba(122,174,159,.3); color:var(--sage-800); display:flex;
+  align-items:center; justify-content:center; cursor:pointer; opacity:0; pointer-events:none; transform:translateY(10px);
+  transition:all var(--dur-s) var(--ease);
+}
+.to-top.show{opacity:1; pointer-events:auto; transform:translateY(0);}
+.to-top:hover{color:var(--paper); border-color:var(--sage-600);}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1000px){
+  .spotlight, .about-hero, .contact-grid{grid-template-columns:1fr;}
+  .about-hero img{height:380px; order:-1;}
+  .cols-grid{grid-template-columns:repeat(2,1fr);}
+  .pillars{grid-template-columns:1fr 1fr;}
+  .people-grid{grid-template-columns:repeat(2,1fr);}
+  .issue-grid{grid-template-columns:repeat(2,1fr);}
+  .category-grid, .winners-grid, .submit-types{grid-template-columns:1fr 1fr;}
+  .jury-grid{grid-template-columns:repeat(2,1fr);}
+  .form-card{grid-template-columns:1fr;}
+  .exh-list{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:640px){
+  .section{padding:4.5rem 0;}
+  .pillars, .people-grid, .issue-grid, .category-grid, .winners-grid, .submit-types, .jury-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  .status-inner{flex-direction:column; align-items:flex-start;}
+  .feature-list li{grid-template-columns:1fr;}
+  .timeline{flex-direction:column; align-items:flex-start; gap:1.6rem;}
+  .t-step::before{display:none;}
+  .t-step{text-align:left; width:100%;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav class="site-nav" id="siteNav">
+  <a href="#home" class="brand">Verdant &amp; Vessel <small>JOURNAL &amp; AWARDS</small></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" data-nav>Home</a></li>
+    <li><a href="#about" data-nav>About</a></li>
+    <li><a href="#magazine" data-nav>The Magazine</a></li>
+    <li><a href="#awards" data-nav>Art Awards</a></li>
+    <li><a href="#submissions" data-nav>Submissions</a></li>
+    <li><a href="#exhibitions" data-nav>Exhibitions</a></li>
+    <li><a href="#contact" data-nav>Contact</a></li>
+  </ul>
+  <a href="#awards" class="nav-cta">Enter the Awards</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+</nav>
+
+<!-- ============================================================
+     HOME / HERO
+     ============================================================ -->
+<section id="home">
+  <div class="hero" id="heroSection">
+    <div class="hero-media">
+      <video autoplay muted loop playsinline poster="https://assets.mixkit.co/active_storage/video_items/100467/1724284980/100467-video-thumb-720-0.jpg">
+        <source src="https://assets.mixkit.co/active_storage/video_items/100467/1724284980/100467-video-720.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="wrap hero-inner">
+      <span class="eyebrow">Independent Journal &amp; International Art Awards — Vol. IX, 2026</span>
+      <h1>Where the hand still <em>leads</em> the eye.</h1>
+      <p class="hero-sub">A quarterly journal and a juried global competition for painters, sculptors, and mixed-media artists — built on craft, not commerce.</p>
+      <div class="hero-ctas">
+        <a href="#magazine" class="btn btn-primary">Explore the Latest Issue</a>
+        <a href="#awards" class="btn btn-ghost">Enter the Art Awards</a>
+      </div>
+    </div>
+    <div class="scroll-cue"><span class="line"></span> SCROLL</div>
+  </div>
+
+  <!-- STATUS BANNER -->
+  <div class="status-banner">
+    <div class="status-inner">
+      <div class="status-left">
+        <span class="dot"></span>
+        <div><strong>Call for Entries — Open now</strong> <span>The Tenth International Art Awards</span></div>
+      </div>
+      <div class="status-facts">
+        <div class="status-fact"><b>Nov 30</b>Final deadline</div>
+        <div class="status-fact"><b>Free</b>Merit-based entry</div>
+        <div class="status-fact"><b>0%</b>Commission on sales</div>
+        <div class="status-fact"><b>14</b>Jurors, 6 countries</div>
+      </div>
+      <a href="#awards" class="btn btn-ghost" style="padding:.6rem 1.3rem;">View Categories</a>
+    </div>
+  </div>
+
+  <!-- MAGAZINE SPOTLIGHT -->
+  <section class="section wrap reveal">
+    <div class="section-head">
+      <div><span class="kicker">Latest Issue</span><h2>No. 34 — On Material &amp; Memory</h2></div>
+      <a href="#magazine" class="btn btn-ghost">Read the full issue</a>
+    </div>
+    <div class="spotlight">
+      <div class="spotlight-cover">
+        <img src="https://images.unsplash.com/photo-1556139930-c23fa4a4f934?w=800&q=80" alt="Cover artwork for Issue No. 34, an abstract textured painting in ochre and umber">
+      </div>
+      <div class="spotlight-body">
+        <h3>Texture as testimony: how six artists let the material speak first</h3>
+        <p class="spotlight-text">This issue traces a quiet shift across studios worldwide — artists working closer to raw material, letting pigment, stone dust, and cast bronze carry meaning that words can't. Featuring a cover portfolio from sculptor Aiko Tanabe and a long-form conversation on spatial dialogue in installation work.</p>
+        <ul class="spotlight-toc">
+          <li><span>Studio Visits</span><span>Aiko Tanabe: Casting in Silence</span></li>
+          <li><span>The Legal Palette</span><span>Consignment Contracts, Explained</span></li>
+          <li><span>The Artist's Mind</span><span>On Studio Isolation</span></li>
+          <li><span>Monographs</span><span>Three Photobooks Worth Owning</span></li>
+        </ul>
+        <div class="hero-ctas" style="margin-top:0;">
+          <a href="#magazine" class="btn btn-primary">Read Online</a>
+          <a href="#magazine" class="btn btn-ghost">Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURATED GALLERY PREVIEW -->
+  <section class="section tight reveal">
+    <div class="wrap section-head">
+      <div><span class="kicker">From the Archive</span><h2>Recent winners &amp; feature stories</h2></div>
+      <p>A rotating selection of paintings and sculpture pulled from this year's award winners and magazine profiles.</p>
+    </div>
+    <div class="gallery-scroller" id="galleryScroller">
+      <div class="g-card"><img src="https://images.unsplash.com/photo-1556139930-c23fa4a4f934?w=700&q=80" alt="Abstract oil painting in deep green and gold"><div class="g-overlay"><span class="g-tag">Gold — Abstract Painting</span><div class="g-title">Understory</div><div class="g-artist">Marisol Yeun, Manila</div></div></div>
+      <div class="g-card"><img src="https://images.unsplash.com/photo-1759765098479-17166c4c84f0?w=700&q=80" alt="Bronze figurative sculpture in a gallery"><div class="g-overlay"><span class="g-tag">Silver — Bronze Casting</span><div class="g-title">Vessel Bearer</div><div class="g-artist">Kofi Mensah, Accra</div></div></div>
+      <div class="g-card"><img src="https://images.unsplash.com/photo-1573512443418-c6768862dda7?w=700&q=80" alt="Textured mixed media wall sculpture"><div class="g-overlay"><span class="g-tag">Editor's Choice — Mixed Media</span><div class="g-title">Fault Lines</div><div class="g-artist">Elin Voss, Malmö</div></div></div>
+      <div class="g-card"><img src="https://images.unsplash.com/photo-1556139930-c23fa4a4f934?w=700&q=80" alt="Close up detail of a figurative oil portrait"><div class="g-overlay"><span class="g-tag">Gold — Figurative</span><div class="g-title">Quiet Hour</div><div class="g-artist">Priya Nair, Kochi</div></div></div>
+      <div class="g-card"><img src="https://images.unsplash.com/photo-1685062478366-907bf61feee0?w=700&q=80" alt="Stone carved sculpture, close detail"><div class="g-overlay"><span class="g-tag">Honorable Mention — Stone</span><div class="g-title">Erosion Study I</div><div class="g-artist">Tomas Rejek, Brno</div></div></div>
+      <div class="g-card"><img src="https://images.unsplash.com/photo-1600173293426-65190a24be72?w=700&q=80" alt="Ceramic sculptural forms on a plinth"><div class="g-overlay"><span class="g-tag">Silver — Ceramics</span><div class="g-title">Kiln Notes</div><div class="g-artist">Hana Oduya, Lagos</div></div></div>
+    </div>
+  </section>
+
+  <!-- EDITORIAL HIGHLIGHTS -->
+  <section class="section tight wrap reveal">
+    <div class="section-head">
+      <div><span class="kicker">Editorial Highlights</span><h2>From the current columns</h2></div>
+    </div>
+    <div class="cols-grid reveal-stagger">
+      <div class="col-card"><span class="num">Studio Visits</span><h4>Preparing a canvas the old way</h4><p>A rabbit-skin glue primer, revisited by three painters who never switched to acrylic gesso.</p></div>
+      <div class="col-card"><span class="num">Material &amp; Process</span><h4>What lost-wax casting still teaches</h4><p>Inside a foundry in Accra where bronze pours haven't changed in three generations.</p></div>
+      <div class="col-card"><span class="num">The Legal Palette</span><h4>Reading a consignment contract</h4><p>The five clauses every artist should slow down on before signing with a gallery.</p></div>
+      <div class="col-card"><span class="num">The Artist's Mind</span><h4>Naming the burnout, not curing it</h4><p>An honest essay on creative blocks, studio isolation, and what actually helped.</p></div>
+    </div>
+  </section>
+</section>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section id="about" class="section wrap reveal">
+  <div class="about-hero">
+    <div>
+      <span class="kicker">About the Platform</span>
+      <h2>Editorial independence, in service of the artist's hand.</h2>
+      <p>We started Verdant &amp; Vessel because the loudest voices in contemporary art are rarely the artists themselves. Our journal and awards exist to put craftsmanship, concept, and technique ahead of market hype — with a jury and editorial board answerable to no gallery, collector, or sponsor.</p>
+      <p>Every work we publish or award is made by a human hand. We verify process documentation for every submission, and we do not accept AI-generated imagery in any category.</p>
+    </div>
+    <img src="https://images.unsplash.com/photo-1658301720419-d1c963f7993b?w=900&q=80" alt="Artist's hand mixing oil paint on a wooden palette">
+  </div>
+
+  <div class="pillars reveal-stagger">
+    <div class="pillar"><h4>Non-commercial by design</h4><p>No entry-fee tiers that buy better odds, no pay-to-play sponsorships influencing the jury's decisions.</p></div>
+    <div class="pillar"><h4>Human-made, verified</h4><p>Authenticity declarations and process documentation are required for every painting and sculpture submitted.</p></div>
+    <div class="pillar"><h4>Artist rights, protected</h4><p>You retain full copyright always. We license only what's needed to publish and exhibit your work.</p></div>
+  </div>
+
+  <div style="margin-top:6rem;">
+    <div class="section-head">
+      <div><span class="kicker">Editorial Board</span><h2>Leadership &amp; advisory committee</h2></div>
+    </div>
+    <div class="people-grid">
+      <div class="person"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Portrait of Naomi Ferreira"><h5>Naomi Ferreira</h5><span>Founder &amp; Editor-in-Chief</span></div>
+      <div class="person"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Portrait of Dev Anand Kapoor"><h5>Dev Anand Kapoor</h5><span>Sculpture Curator</span></div>
+      <div class="person"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Portrait of Lucia Moretti"><h5>Lucia Moretti</h5><span>Painting Curator</span></div>
+      <div class="person"><img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Portrait of Samuel Otieno"><h5>Samuel Otieno</h5><span>Technical Advisor</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     THE MAGAZINE
+     ============================================================ -->
+<section id="magazine" class="section wrap reveal">
+  <div class="section-head">
+    <div><span class="kicker">The Magazine</span><h2>A quarterly read, built for artists</h2></div>
+    <p>Long-form essays, studio visits, and practical craft — no listicles, no market gossip.</p>
+  </div>
+
+  <div class="tabs" id="magTabs">
+    <button class="tab-btn active" data-tab="mag-current">Current Issue</button>
+    <button class="tab-btn" data-tab="mag-archive">Archive</button>
+    <button class="tab-btn" data-tab="mag-columns">Editorial Columns</button>
+  </div>
+
+  <div class="tab-panel active" id="mag-current">
+    <div class="spotlight">
+      <div class="spotlight-cover">
+        <img src="https://images.unsplash.com/photo-1556139930-c23fa4a4f934?w=800&q=80" alt="Cover of Issue No. 34">
+      </div>
+      <div>
+        <h3>No. 34 — On Material &amp; Memory</h3>
+        <p class="spotlight-text">A thematic essay by Chief Editor Naomi Ferreira opens this issue, followed by a nine-page portfolio from cover artist Aiko Tanabe and features on spatial installation, pigment sourcing, and provenance law.</p>
+        <div class="spotlight-meta"><span>84 pages</span><span>Released Aug 2026</span><span>Free to read</span></div>
+        <div class="hero-ctas" style="margin-top:1.8rem;">
+          <a href="#" class="btn btn-primary">Read Online</a>
+          <a href="#" class="btn btn-ghost">Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="mag-archive">
+    <div class="issue-grid">
+      <div class="issue-card"><img src="https://images.unsplash.com/photo-1596567181723-ba7d15eacefb?w=500&q=80" alt="Issue No. 33 cover"><h5>No. 33 — The Figure, Reconsidered</h5><span>Spring 2026</span></div>
+      <div class="issue-card"><img src="https://images.unsplash.com/photo-1637578035851-c5b169722de1?w=500&q=80" alt="Issue No. 32 cover"><h5>No. 32 — Weight &amp; Bronze</h5><span>Winter 2025</span></div>
+      <div class="issue-card"><img src="https://images.unsplash.com/photo-1573512443418-c6768862dda7?w=500&q=80" alt="Issue No. 31 cover"><h5>No. 31 — Color as Argument</h5><span>Autumn 2025</span></div>
+      <div class="issue-card"><img src="https://images.unsplash.com/photo-1577083862054-7324cd025fa6?w=500&q=80" alt="Issue No. 30 cover"><h5>No. 30 — Studio Ground</h5><span>Summer 2025</span></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="mag-columns">
+    <ul class="feature-list">
+      <li><span class="flabel">Studio Visits &amp; Process</span><div><h5>Deep dives into studio practice</h5><p>Canvas preparation, sculpting armatures, casting, and material experiments, told through the artists who do them daily.</p></div></li>
+      <li><span class="flabel">Material &amp; Technique</span><div><h5>Pigments, mediums, and stonework</h5><p>Practical articles on stone carving, metalwork, ceramics, and archival preservation methods.</p></div></li>
+      <li><span class="flabel">The Legal Palette</span><div><h5>Legal advice, written for artists</h5><p>Copyright, gallery consignment contracts, provenance documentation, and art transport insurance — explained plainly.</p></div></li>
+      <li><span class="flabel">The Artist's Mind</span><div><h5>The realities of a working artist</h5><p>Essays on burnout, studio isolation, and creative blocks, written from lived experience rather than theory.</p></div></li>
+      <li><span class="flabel">Monographs &amp; Art Books</span><div><h5>Critical reviews, honestly written</h5><p>Photobooks, monographs, and exhibition catalogues, reviewed by working critics and curators.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================
+     ART AWARDS
+     ============================================================ -->
+<section id="awards">
+  <div class="awards-hero">
+    <div class="wrap">
+      <span class="kicker">Art Awards — Overview</span>
+      <h2>The Tenth International Art Awards</h2>
+      <p>A juried global competition for painting, sculpture, and mixed media — recognizing craft and concept, with zero commission on any resulting sale.</p>
+      <div class="timeline">
+        <div class="t-step current"><div class="t-dot"></div><h6>Entries Open</h6><span>Jun 1</span></div>
+        <div class="t-step"><div class="t-dot"></div><h6>Early-bird Ends</h6><span>Sep 15</span></div>
+        <div class="t-step"><div class="t-dot"></div><h6>Final Deadline</h6><span>Nov 30</span></div>
+        <div class="t-step"><div class="t-dot"></div><h6>Jury Deliberation</h6><span>Dec – Jan</span></div>
+        <div class="t-step"><div class="t-dot"></div><h6>Winners Announced</h6><span>Feb 14</span></div>
+        <div class="t-step"><div class="t-dot"></div><h6>Exhibition</h6><span>April</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap section">
+    <div class="tabs" id="awardTabs">
+      <button class="tab-btn active" data-tab="aw-categories">Categories</button>
+      <button class="tab-btn" data-tab="aw-jury">Jury</button>
+      <button class="tab-btn" data-tab="aw-rules">Rules &amp; FAQs</button>
+      <button class="tab-btn" data-tab="aw-winners">Winners</button>
+    </div>
+
+    <div class="tab-panel active" id="aw-categories">
+      <div class="category-grid">
+        <div class="cat-card"><img src="https://images.unsplash.com/photo-1596567181723-ba7d15eacefb?w=600&q=80" alt="Oil painting in progress on an easel"><div class="cat-overlay"><h4>Painting &amp; 2D Media</h4><div class="cat-tags"><span>Oil</span><span>Acrylic</span><span>Watercolor</span><span>Drawing</span><span>Mixed Media</span><span>Abstract</span><span>Figurative</span></div></div></div>
+        <div class="cat-card"><img src="https://images.unsplash.com/photo-1759765098479-17166c4c84f0?w=600&q=80" alt="Bronze and metal sculpture in a studio"><div class="cat-overlay"><h4>Sculpture &amp; 3D Media</h4><div class="cat-tags"><span>Stone</span><span>Wood</span><span>Bronze</span><span>Ceramics</span><span>Assemblage</span><span>Installation</span></div></div></div>
+        <div class="cat-card"><img src="https://images.unsplash.com/photo-1573512443418-c6768862dda7?w=600&q=80" alt="Stack of self-published artist monographs and zines"><div class="cat-overlay"><h4>Art Publications</h4><div class="cat-tags"><span>Monographs</span><span>Zines</span><span>Catalogues</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="aw-jury">
+      <div class="jury-grid">
+        <div class="person"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Portrait of jury member Lucia Moretti"><h5>Lucia Moretti</h5><span>Painting Specialist, Milan</span></div>
+        <div class="person"><img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Portrait of jury member Samuel Otieno"><h5>Samuel Otieno</h5><span>Sculpture Specialist, Nairobi</span></div>
+        <div class="person"><img src="https://randomuser.me/api/portraits/women/51.jpg" alt="Portrait of jury member Wren Alcott"><h5>Wren Alcott</h5><span>Museum Curator, London</span></div>
+        <div class="person"><img src="https://randomuser.me/api/portraits/men/64.jpg" alt="Portrait of jury member Haruki Sato"><h5>Haruki Sato</h5><span>Art Historian, Kyoto</span></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="aw-rules">
+      <ul class="feature-list" style="margin-bottom:3rem;">
+        <li><span class="flabel">Image Specs</span><div><h5>Technical requirements for paintings</h5><p>300 DPI JPEGs minimum, accurate color representation, and even, glare-free lighting with no visible frame.</p></div></li>
+        <li><span class="flabel">Sculpture Specs</span><div><h5>Requirements for 3D work</h5><p>Front, side, and back views plus one detail shot showing surface and texture, with a scale reference in at least one image.</p></div></li>
+        <li><span class="flabel">Eligibility</span><div><h5>Originality &amp; authenticity</h5><p>Work must be original, completed within the last three years, within published size limits, and accompanied by a signed non-AI declaration.</p></div></li>
+        <li><span class="flabel">Copyright</span><div><h5>You keep 100% of your rights</h5><p>We take only a limited, non-exclusive license to publish and exhibit your entry — ownership never transfers to us.</p></div></li>
+      </ul>
+      <div class="faq-list" id="faqList">
+        <div class="faq-item open">
+          <button class="faq-q">How does judging work?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Entries are reviewed anonymously in two stages: medium specialists score first, followed by a cross-panel review with the full jury before any award is finalized.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is there an entry fee?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Entry is free for early submissions and modestly subsidized afterward — we don't run a pay-to-enter model that favors higher fee tiers.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What's the difference between an Award and an Editor's Choice?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Awards are decided by the full jury vote. Editor's Choice selections are made independently by our editorial team and don't affect jury scoring.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I submit AI-assisted work?<span class="plus">+</span></button>
+          <div class="faq-a"><p>No. Every category requires a signed declaration confirming the work is human-made, and we periodically request process documentation to verify it.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="aw-winners">
+      <div class="winners-grid">
+        <div class="winner-card"><div class="winner-badge">Gold — Painting</div><img src="https://images.unsplash.com/photo-1556139930-c23fa4a4f934?w=600&q=80" alt="Winning figurative oil portrait, Quiet Hour"><div class="winner-info"><h5>Quiet Hour</h5><span>Priya Nair — Kochi, India</span></div></div>
+        <div class="winner-card"><div class="winner-badge">Gold — Sculpture</div><img src="https://images.unsplash.com/photo-1759765098479-17166c4c84f0?w=600&q=80" alt="Winning bronze sculpture, Vessel Bearer"><div class="winner-info"><h5>Vessel Bearer</h5><span>Kofi Mensah — Accra, Ghana</span></div></div>
+        <div class="winner-card"><div class="winner-badge">Editor's Choice</div><img src="https://images.unsplash.com/photo-1573512443418-c6768862dda7?w=600&q=80" alt="Winning mixed media wall piece, Fault Lines"><div class="winner-info"><h5>Fault Lines</h5><span>Elin Voss — Malmö, Sweden</span></div></div>
+      </div>
+      <div style="text-align:center; margin-top:3rem;"><a href="#" class="btn btn-ghost">View Full Digital Archive</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SUBMISSIONS
+     ============================================================ -->
+<section id="submissions" class="section wrap reveal">
+  <div class="section-head">
+    <div><span class="kicker">Magazine Submissions</span><h2>Pitch us for the next issue</h2></div>
+    <p>No. 35 — <em>On Scale &amp; Silence</em> — is open for pitches through October 10.</p>
+  </div>
+
+  <div class="submit-types">
+    <div class="type-card"><h4>Visual Portfolios / Series</h4><p>5–10 related paintings or sculptures, with a 200–300 word concept statement.</p></div>
+    <div class="type-card"><h4>Single Standout Artworks</h4><p>One work of exceptional depth, considered for editorial illustration.</p></div>
+    <div class="type-card"><h4>Essays &amp; Critical Writing</h4><p>First-person essays or art-historical reflections, 800–1,500 words.</p></div>
+  </div>
+
+  <form class="form-card" id="submissionForm">
+    <div class="field"><label for="s-name">Full name</label><input id="s-name" type="text" placeholder="Your name" required></div>
+    <div class="field"><label for="s-email">Email</label><input id="s-email" type="email" placeholder="you@example.com" required></div>
+    <div class="field"><label for="s-type">Contribution type</label>
+      <select id="s-type"><option>Visual Portfolio / Series</option><option>Single Artwork</option><option>Essay / Critical Writing</option></select>
+    </div>
+    <div class="field"><label for="s-portfolio">Portfolio link</label><input id="s-portfolio" type="url" placeholder="https://"></div>
+    <div class="field full"><label for="s-bio">Artist bio</label><textarea id="s-bio" rows="3" placeholder="A short biography"></textarea></div>
+    <div class="field full">
+      <label>Upload images or documents</label>
+      <div class="dropzone" id="dropzone">Drag files here, or click to browse<span>JPEG, PNG, or PDF — up to 25MB</span></div>
+    </div>
+    <div class="field full"><button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Submit for Review</button></div>
+  </form>
+</section>
+
+<!-- ============================================================
+     EXHIBITIONS
+     ============================================================ -->
+<section id="exhibitions" class="section wrap reveal">
+  <div class="section-head">
+    <div><span class="kicker">Exhibitions &amp; Gallery Partnerships</span><h2>Where the work is seen in person</h2></div>
+  </div>
+
+  <div class="exh-feature">
+    <img src="https://images.unsplash.com/photo-1563292769-4e05b684851a?w=1400&q=80" alt="Interior of a contemporary art gallery exhibition space">
+    <div class="exh-overlay">
+      <div class="exh-overlay-inner">
+        <div><h3>The Tenth Awards Exhibition</h3><p>Winners and honorable mentions, on physical display for six weeks.</p></div>
+        <a href="#" class="btn btn-primary">Reserve Tickets</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="exh-list" style="margin-top:1.4rem;">
+    <div class="exh-feature" style="height:400px;">
+      <img src="https://images.unsplash.com/photo-1569783721854-33a99b4c0bae?w=1000&q=80" alt="Visitors viewing sculpture at a gallery opening">
+      <div class="exh-overlay"><div><h3 style="font-size:1.6rem;">Lisbon — Galeria do Tejo</h3><p>Sep 12 – Oct 24 · Curated by Lucia Moretti</p></div></div>
+    </div>
+    <div class="exh-feature">
+      <img src="https://images.unsplash.com/photo-1601887389937-0b02c26b602c?w=800&q=80" alt="Close up of sculptural installation shot from prior exhibition archive">
+      <div class="exh-overlay"><div><h3 style="font-size:1.3rem;">Archive</h3><p>Past showcases &amp; catalogues</p></div></div>
+    </div>
+  </div>
+
+  <div class="partner-strip">
+    <span>Galeria do Tejo</span><span>North Light Foundry</span><span>Kōan Project Space</span><span>Muro Cultural Center</span><span>Atelier Freight Co.</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contact" class="light">
+  <div class="wrap section">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <span class="kicker">Contact</span>
+        <h2>Let's talk — editorial, awards, or press.</h2>
+        <p>We read every message ourselves. For award-specific technical questions, check the FAQs first — it covers most of what comes up.</p>
+        <ul class="contact-channels">
+          <li><span>Editorial</span><b>editorial@verdantandvessel.art</b></li>
+          <li><span>Awards Administration</span><b>awards@verdantandvessel.art</b></li>
+          <li><span>Press &amp; Partnerships</span><b>press@verdantandvessel.art</b></li>
+        </ul>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Threads">TH</a>
+          <a href="#" aria-label="LinkedIn">IN</a>
+        </div>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <label for="c-name">Name</label><input id="c-name" type="text" required>
+        <label for="c-email">Email</label><input id="c-email" type="email" required>
+        <label for="c-subject">Subject</label>
+        <select id="c-subject"><option>General Inquiry</option><option>Award Query</option><option>Magazine Submission</option><option>Exhibition Collaboration</option></select>
+        <label for="c-message">Message</label><textarea id="c-message" rows="4" required></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">Verdant &amp; Vessel</div>
+        <p>An independent art journal and international competition for painting, sculpture, and mixed media. Founded 2017.</p>
+        <div class="newsletter"><input type="email" placeholder="Your email"><button type="button" id="newsBtn">Join</button></div>
+      </div>
+      <div class="footer-col"><h6>Explore</h6><ul>
+        <li><a href="#about">About</a></li><li><a href="#magazine">The Magazine</a></li><li><a href="#awards">Art Awards</a></li><li><a href="#exhibitions">Exhibitions</a></li>
+      </ul></div>
+      <div class="footer-col"><h6>Awards</h6><ul>
+        <li><a href="#awards">Categories</a></li><li><a href="#awards">Jury</a></li><li><a href="#awards">Rules &amp; FAQs</a></li><li><a href="#awards">Winners</a></li>
+      </ul></div>
+      <div class="footer-col"><h6>Participate</h6><ul>
+        <li><a href="#submissions">Magazine Submissions</a></li><li><a href="#awards">Enter the Awards</a></li><li><a href="#contact">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h6>Registered</h6><ul>
+        <li>Verdant &amp; Vessel Publishing Ltd.</li><li>Lisbon, Portugal</li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Verdant &amp; Vessel Publishing Ltd. All rights reserved.</span>
+      <div class="legal-links">
+        <a href="#" id="termsLink">Terms of Use</a>
+        <a href="#" id="privacyLink">Privacy Policy</a>
+        <a href="#" id="copyrightLink">Copyright Notice</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top">&#8593;</button>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---- Nav scroll state ---- */
+  var nav = document.getElementById('siteNav');
+  var toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 40);
+    toTop.classList.toggle('show', y > 700);
+  }, {passive:true});
+
+  /* ---- Mobile nav toggle ---- */
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', function(){
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ navLinks.classList.remove('open'); });
+  });
+
+  /* ---- Back to top ---- */
+  toTop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* ---- Hero entrance animation ---- */
+  requestAnimationFrame(function(){
+    document.getElementById('heroSection').classList.add('animate-in');
+  });
+
+  /* ---- Scroll reveal ---- */
+  var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:.15, rootMargin:'0px 0px -60px 0px'});
+  revealEls.forEach(function(el){ io.observe(el); });
+
+  /* ---- Scrollspy ---- */
+  var navA = document.querySelectorAll('[data-nav]');
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var id = entry.target.getAttribute('id');
+        navA.forEach(function(a){
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  sections.forEach(function(s){ spy.observe(s); });
+
+  /* ---- Tabs (generic) ---- */
+  function setupTabs(containerId){
+    var container = document.getElementById(containerId);
+    if(!container) return;
+    var buttons = container.querySelectorAll('.tab-btn');
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        buttons.forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        var target = btn.getAttribute('data-tab');
+        var panels = document.querySelectorAll('#' + container.id + ' ~ .tab-panel, .tab-panel');
+        document.querySelectorAll('.tab-panel').forEach(function(p){
+          if(p.parentElement === btn.closest('section') || btn.closest('.wrap').contains(p) || btn.closest('.awards-hero') === null){
+            // scope panels to same section as the tab bar
+          }
+        });
+      });
+    });
+  }
+  // Scoped tab logic: find panels within the same ancestor section as the tab bar
+  document.querySelectorAll('.tabs').forEach(function(tabBar){
+    var scopeSection = tabBar.closest('section');
+    var buttons = tabBar.querySelectorAll('.tab-btn');
+    var panels = scopeSection.querySelectorAll('.tab-panel');
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        buttons.forEach(function(b){ b.classList.remove('active'); });
+        panels.forEach(function(p){ p.classList.remove('active'); });
+        btn.classList.add('active');
+        var target = document.getElementById(btn.getAttribute('data-tab'));
+        if(target) target.classList.add('active');
+      });
+    });
+  });
+
+  /* ---- FAQ accordion ---- */
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    function sync(){
+      if(item.classList.contains('open')){
+        a.style.maxHeight = a.scrollHeight + 'px';
+      } else {
+        a.style.maxHeight = '0px';
+      }
+    }
+    sync();
+    q.addEventListener('click', function(){
+      var willOpen = !item.classList.contains('open');
+      item.parentElement.querySelectorAll('.faq-item').forEach(function(i){
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = '0px';
+      });
+      if(willOpen){ item.classList.add('open'); sync(); }
+    });
+  });
+
+  /* ---- Toast helper ---- */
+  var toast = document.getElementById('toast');
+  var toastTimer;
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 2800);
+  }
+
+  /* ---- Forms (mock submit — no backend) ---- */
+  ['submissionForm','contactForm'].forEach(function(id){
+    var f = document.getElementById(id);
+    if(!f) return;
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      showToast('Thank you — your submission has been received.');
+      f.reset();
+    });
+  });
+  var newsBtn = document.getElementById('newsBtn');
+  if(newsBtn){
+    newsBtn.addEventListener('click', function(){
+      showToast('Subscribed. Welcome to the studio list.');
+    });
+  }
+  var dropzone = document.getElementById('dropzone');
+  if(dropzone){
+    dropzone.addEventListener('click', function(){
+      showToast('File picker would open here in production.');
+    });
+    ['dragover'].forEach(function(evt){
+      dropzone.addEventListener(evt, function(e){ e.preventDefault(); dropzone.style.borderColor = 'var(--sage-600)'; });
+    });
+    dropzone.addEventListener('dragleave', function(){ dropzone.style.borderColor = ''; });
+    dropzone.addEventListener('drop', function(e){
+      e.preventDefault();
+      dropzone.style.borderColor = '';
+      showToast('File received (demo only).');
+    });
+  }
+
+  /* ---- Legal links: soft placeholder ---- */
+  ['termsLink','privacyLink','copyrightLink'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        showToast('This links to a dedicated legal page in production.');
+      });
+    }
+  });
+
+})();
+</script>
+</body>
+</html>

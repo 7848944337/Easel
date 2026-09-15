@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ATELIER — The independent art journal and global fine art awards celebrating contemporary painting, sculpture, and mixed media. Discover emerging artists, read editorial features, and enter the annual competition.">
+  <title>ATELIER — Art Magazine & Global Fine Art Awards</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ═══ Page Loader ═══ -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-logo">ATELIER</div>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- ═══ Navigation ═══ -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="nav-logo">Atel<span>i</span>er</a>
+
+    <div class="nav-links">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#magazine" class="nav-link">Magazine</a>
+      <a href="#awards" class="nav-link">Awards</a>
+      <a href="#gallery" class="nav-link">Gallery</a>
+      <a href="#exhibitions" class="nav-link">Exhibitions</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <a href="#awards" class="btn btn-sm btn-outline nav-cta">Enter Awards</a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#magazine" class="mobile-link">The Magazine</a>
+    <a href="#awards" class="mobile-link">Art Awards</a>
+    <a href="#gallery" class="mobile-link">Gallery</a>
+    <a href="#exhibitions" class="mobile-link">Exhibitions</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+    <a href="#awards" class="btn btn-primary" style="margin-top: 1rem;">Enter Awards</a>
+  </div>
+
+
+  <!-- ═══ Hero Section ═══ -->
+  <section class="hero" id="hero">
+    <div class="hero-media">
+      <img
+        src="assets/hero_background.jpg"
+        alt="Cinematic art studio with paintings on easels"
+        class="hero-poster"
+      >
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Floating decorative elements -->
+    <div class="hero-float hero-float--circle"></div>
+    <div class="hero-float hero-float--line"></div>
+    <div class="hero-float hero-float--dot"></div>
+
+    <div class="hero-content">
+      <span class="hero-label">Art Magazine & Global Awards — Est. 2024</span>
+      <h1 class="hero-title">Where Art Meets <em>Recognition</em></h1>
+      <p class="hero-subtitle">
+        The independent journal and international awards celebrating contemporary painting, sculpture, and the artists who push the boundaries of craft.
+      </p>
+      <div class="hero-ctas">
+        <a href="#magazine" class="btn btn-primary btn-lg">Explore the Latest Issue</a>
+        <a href="#awards" class="btn btn-outline btn-lg">Enter the Art Awards</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+
+  <!-- ═══ About Section ═══ -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="section-label reveal">Our Philosophy</span>
+          <h2 class="section-title reveal stagger-1">Art Begins in the Studio,<br>Not on the Market</h2>
+          <p class="about-description reveal stagger-2">
+            ATELIER is an independent platform built for the artist's inner journey — the raw craftsmanship, the conceptual depth, and the technical mastery that defines authentic contemporary art. We champion human-made paintings and physical sculptures, free from commercial hype and market speculation.
+          </p>
+          <blockquote class="pull-quote reveal stagger-3">
+            "We believe every brushstroke tells a story, every chisel mark carries intention, and every artist deserves a stage worthy of their dedication."
+          </blockquote>
+          <div class="about-stats reveal stagger-4">
+            <div class="stat-item">
+              <div class="stat-number" data-count="42">0</div>
+              <div class="stat-label">Countries Represented</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" data-count="1200">0</div>
+              <div class="stat-label">Artists Featured</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" data-count="18">0</div>
+              <div class="stat-label">Published Issues</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-images reveal-right stagger-2">
+          <div class="about-img about-img--main">
+            <img src="assets/about_artist.jpg" alt="Artist applying paint to canvas with palette knife" loading="lazy">
+          </div>
+          <div class="about-img about-img--secondary">
+            <img src="assets/about_texture.jpg" alt="Close-up of thick impasto paint texture on canvas" loading="lazy">
+          </div>
+          <div class="about-img--accent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ Featured Content / Services ═══ -->
+  <section class="featured section" id="magazine">
+    <div class="container">
+      <div class="featured-header">
+        <span class="section-label reveal">What We Do</span>
+        <h2 class="section-title reveal stagger-1">Celebrating Art Through<br>Every Medium</h2>
+        <p class="section-subtitle reveal stagger-2">
+          From editorial publication to global competition, we create platforms that honour artistic integrity and craft.
+        </p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Card 1: The Magazine -->
+        <div class="bento-card reveal stagger-1">
+          <div class="bento-card-bg">
+            <img src="assets/about_texture.jpg" alt="Art magazine background" loading="lazy">
+          </div>
+          <div class="bento-card-overlay"></div>
+          <div class="bento-card-content">
+            <div class="bento-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>The Magazine</h3>
+            <p>Our biannual digital publication features studio visits, material deep-dives, critical essays, and artist monograph reviews.</p>
+            <a href="#" class="bento-card-link">
+              Read Current Issue
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: Art Awards -->
+        <div class="bento-card reveal stagger-2">
+          <div class="bento-card-bg">
+            <img src="assets/gallery_sculpture.jpg" alt="Art awards background" loading="lazy">
+          </div>
+          <div class="bento-card-overlay"></div>
+          <div class="bento-card-content">
+            <div class="bento-card-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Art Awards</h3>
+            <p>Annual international competition with merit-based entry and zero commission on exhibited work.</p>
+            <a href="#" class="bento-card-link">
+              View Categories
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: Exhibitions -->
+        <div class="bento-card reveal stagger-3" id="exhibitions">
+          <div class="bento-card-bg">
+            <img src="assets/cta_background.jpg" alt="Exhibition background" loading="lazy">
+          </div>
+          <div class="bento-card-overlay"></div>
+          <div class="bento-card-content">
+            <div class="bento-card-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 9h18M9 21V9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Exhibitions</h3>
+            <p>Physical showcases in partner galleries across London, Berlin, New York, and Tokyo.</p>
+            <a href="#" class="bento-card-link">
+              Upcoming Shows
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4: Submissions -->
+        <div class="bento-card reveal stagger-4">
+          <div class="bento-card-bg">
+            <img src="assets/gallery_abstract.jpg" alt="Submissions background" loading="lazy">
+          </div>
+          <div class="bento-card-overlay"></div>
+          <div class="bento-card-content">
+            <div class="bento-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Submit Your Work</h3>
+            <p>Open calls for visual portfolios, standout single works, critical essays, and art historical reflections for upcoming issues.</p>
+            <a href="#" class="bento-card-link">
+              Submission Guidelines
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ Gallery / Showcase ═══ -->
+  <section class="gallery section" id="gallery">
+    <div class="gallery-header">
+      <div class="gallery-header-text">
+        <span class="section-label reveal">Award Winners & Featured Artists</span>
+        <h2 class="section-title reveal stagger-1">Selected Works</h2>
+      </div>
+      <div class="gallery-hint reveal stagger-2">
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Drag to explore
+      </div>
+    </div>
+
+    <div class="gallery-track" id="galleryTrack">
+      <div class="gallery-item">
+        <img src="assets/gallery_oil_landscape.jpg" alt="Mountain landscape oil painting" loading="lazy">
+        <div class="gallery-item-info">
+          <div class="gallery-item-title">Alpenglow at Dusk</div>
+          <div class="gallery-item-artist">Elena Marchetti</div>
+          <div class="gallery-item-medium">Oil on Canvas — 120 × 90 cm</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="assets/gallery_sculpture.jpg" alt="Bronze figure sculpture" loading="lazy">
+        <div class="gallery-item-info">
+          <div class="gallery-item-title">Ascent</div>
+          <div class="gallery-item-artist">James Okonkwo</div>
+          <div class="gallery-item-medium">Patinated Bronze — 85 cm height</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="assets/gallery_abstract.jpg" alt="Abstract expressionist painting" loading="lazy">
+        <div class="gallery-item-info">
+          <div class="gallery-item-title">Resonance in Crimson</div>
+          <div class="gallery-item-artist">Sofia Lindqvist</div>
+          <div class="gallery-item-medium">Acrylic & Gold Leaf — 200 × 150 cm</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="assets/gallery_portrait.jpg" alt="Figurative portrait painting" loading="lazy">
+        <div class="gallery-item-info">
+          <div class="gallery-item-title">The Quiet Hour</div>
+          <div class="gallery-item-artist">Tomás Herrera</div>
+          <div class="gallery-item-medium">Oil on Linen — 100 × 75 cm</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="assets/gallery_mixed_media.jpg" alt="Mixed media collage artwork" loading="lazy">
+        <div class="gallery-item-info">
+          <div class="gallery-item-title">Fragments of Memory</div>
+          <div class="gallery-item-artist">Aisha Patel</div>
+          <div class="gallery-item-medium">Mixed Media & Collage — 180 × 140 cm</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="assets/gallery_ceramic.jpg" alt="Contemporary ceramic sculpture" loading="lazy">
+        <div class="gallery-item-info">
+          <div class="gallery-item-title">Continuum</div>
+          <div class="gallery-item-artist">Yuki Tanaka</div>
+          <div class="gallery-item-medium">Stoneware & Porcelain — 45 cm height</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ Features / Benefits ═══ -->
+  <section class="features section" id="awards">
+    <div class="container">
+      <div class="features-header">
+        <span class="section-label reveal">Why Enter ATELIER Awards</span>
+        <h2 class="section-title reveal stagger-1">Built for Artists,<br>By Artists</h2>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-item reveal stagger-1">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h4>Zero Commission</h4>
+          <p>We never take a percentage of sales from exhibited or awarded artwork. Your earnings are yours.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-item reveal stagger-2">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h4>Global Jury Panel</h4>
+          <p>International jurors spanning painting specialists, sculptors, art historians, and museum curators.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-item reveal stagger-3">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h4>Free Merit-Based Entry</h4>
+          <p>Access to the competition is based on artistic merit, ensuring inclusivity for all serious artists worldwide.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-item reveal stagger-4">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h4>Artist Copyright Retained</h4>
+          <p>Artists keep 100% intellectual property rights. We only request a limited promotional license for catalogues.</p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-item reveal stagger-5">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h4>Published in Annual Book</h4>
+          <p>Winners and shortlisted artists are published in our annual awards catalogue — a lasting record of achievement.</p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-item reveal stagger-6">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 9h18M9 21V9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h4>Physical Exhibition</h4>
+          <p>Selected works are showcased in prestigious partner galleries in London, Berlin, New York, and Tokyo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ Testimonials ═══ -->
+  <section class="testimonials section">
+    <div class="container">
+      <div class="testimonials-header">
+        <span class="section-label reveal">Artist Voices</span>
+        <h2 class="section-title reveal stagger-1">What Our Community Says</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card reveal stagger-1">
+          <div class="testimonial-quote-mark">"</div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">
+            "ATELIER's blind jury process gave me confidence that my work was judged purely on its merit. Being featured in their magazine opened doors I never expected."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="assets/gallery_portrait.jpg" alt="Elena Marchetti" loading="lazy">
+            </div>
+            <div>
+              <div class="testimonial-name">Elena Marchetti</div>
+              <div class="testimonial-role">Oil Painter — Florence, Italy</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card reveal stagger-2">
+          <div class="testimonial-quote-mark">"</div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">
+            "Unlike other competitions, ATELIER actually cares about the sculptor's craft. The multiple-view submission format truly lets three-dimensional work speak for itself."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="assets/gallery_sculpture.jpg" alt="James Okonkwo" loading="lazy">
+            </div>
+            <div>
+              <div class="testimonial-name">James Okonkwo</div>
+              <div class="testimonial-role">Sculptor — Lagos, Nigeria</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card reveal stagger-3">
+          <div class="testimonial-quote-mark">"</div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">
+            "The editorial integrity is what sets ATELIER apart. No sponsored features, no paid placements — just honest, thoughtful writing about art and the people who make it."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="assets/gallery_mixed_media.jpg" alt="Aisha Patel" loading="lazy">
+            </div>
+            <div>
+              <div class="testimonial-name">Aisha Patel</div>
+              <div class="testimonial-role">Mixed Media Artist — Mumbai, India</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ CTA Section ═══ -->
+  <section class="cta-section" id="cta">
+    <div class="cta-bg">
+      <img src="assets/cta_background.jpg" alt="Art gallery interior during exhibition opening" loading="lazy">
+    </div>
+    <div class="container">
+      <div class="cta-content">
+        <span class="section-label reveal" style="justify-content: center;">Submissions Open</span>
+        <h2 class="reveal stagger-1">Your Art Deserves<br>the World Stage</h2>
+        <p class="reveal stagger-2">
+          Join over 1,200 artists from 42 countries. Submit your paintings, sculptures, or mixed media work for the 2025 ATELIER Global Art Awards.
+        </p>
+        <a href="#" class="btn btn-primary btn-lg reveal stagger-3">Submit Your Work Now</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <a href="#" class="footer-logo">Atel<span>i</span>er</a>
+          <p class="footer-tagline">
+            The independent art journal and global fine art awards celebrating contemporary painting, sculpture, and the artists who push boundaries.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="Threads">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M15.5 11c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zM12 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm-3.5-3c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="X / Twitter">
+              <svg viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768M20 4l-6.768 6.768" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-column">
+          <h5>Quick Links</h5>
+          <div class="footer-links">
+            <a href="#about" class="footer-link">About Us</a>
+            <a href="#magazine" class="footer-link">The Magazine</a>
+            <a href="#awards" class="footer-link">Art Awards</a>
+            <a href="#gallery" class="footer-link">Gallery</a>
+            <a href="#exhibitions" class="footer-link">Exhibitions</a>
+            <a href="#contact" class="footer-link">Contact</a>
+          </div>
+        </div>
+
+        <!-- Magazine -->
+        <div class="footer-column">
+          <h5>The Magazine</h5>
+          <div class="footer-links">
+            <a href="#" class="footer-link">Current Issue</a>
+            <a href="#" class="footer-link">Past Issues Archive</a>
+            <a href="#" class="footer-link">Studio Visits</a>
+            <a href="#" class="footer-link">Material & Technique</a>
+            <a href="#" class="footer-link">The Artist's Mind</a>
+            <a href="#" class="footer-link">The Legal Palette</a>
+          </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer-column footer-newsletter">
+          <h5>Stay Connected</h5>
+          <p>Subscribe for award announcements, new issues, and calls for submissions.</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" class="newsletter-input" placeholder="Your email address" required>
+            <button type="submit" class="newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          © 2024 ATELIER Art Magazine & Global Awards. All rights reserved. Registered publication.
+        </p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Copyright Notice</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
